@@ -3,27 +3,31 @@ var btnArtigo = document.getElementById("btnArtigo");
 var span = document.getElementsByClassName("close")[0];
 
 sistemasDeComunicacao = [
-  "Carlos Alexandre Rolim Fernandes",
-  "Daniel Benevides da Costa",
-  "Francisco Rafael Marques Lima",
-  "José Cláudio do Nascimento",
-  "Wilton Bezerra de Fraga"
+  "Análise e Processamento de Sinais em Sistemas de Comunicação Sem Fio Cooperativos (Alexandre)",
+  "Aplicação de Aprendizagem de Máquinas em Alocação de Recursos para Redes Móveis (Rafael)",
+  "Controle de Rádio-Enlace e Alocação de Recursos para New Radio (Rafael)",
+  "Modelagem, Análise de Desempenho e Alocação/Otimização de Recursos de Rádio para Sistemas de Comunicações Sem Fio (Rafael, Daniel e Alexandre)",
+  "Técnicas Emergentes para Sistemas de Comunicações"
 ];
 algoritmosEComputacaoDistribuida = [
-  "Iális Cavalcante de Paula Júnior",
-  "Jarbas Joaci de Mesquita Sá Júnior",
+  "Desenvolvimento e aplicação de métodos de análise de texturas e formas (Jarbas Joaci de Mesquita Sá Júnior)",
+  "Análise e desenvolvimento de métodos de agrupamento em processamento digital de imagens (Rui Facundo Vigelis)",
   "Aplicação de processamento digital de imagens na prevenção e detecção de fraudes em conteúdos digitais (Marcelo Marques Simões de Souza)",
-  "Márcio André Baima Amora",
-  "Rui Facundo Vigelis"
+  "Diagnóstico inteligente de softwares (Márcio André Baima Amora)",
+  "Tecnologias assistivas para pessoas com deficiências (Alexandre)",
+  "Processamento de sinais sísmicos (Alexandre)",
+  "Análise e reconhecimento de imagens clínicas e biométricas (Iális)",
+  "Detecção de COVID-19 em imagens de tomografia computadorizada de pulmão (Iális, Alexandre, Márcio)",
+  "Aplicações e desenvolvimento de algoritmos de aprendizagem de máquina (Iális, Jarbas, Alexandre, Márcio, Marcelo, Rui)"
 ];
 eletronicaDePotencia = [
-  "Adson Bezerra Moreira",
-  "Edilson Mineiro Sá Júnior",
-  "Isaac Rocha Machado",
-  "Kleber César Alves de Souza",
-  "Marcus Rogério de Castro",
-  "Vandilberto Pereira Pinto",
-  "Vanessa Siqueira de Castro Teixeira"
+  "Controle Robusto aplicado ao DFIF (Isaac, Vandilberto)",
+  "Prognóstico e Monitoramento da Saúde de Baterias para Múltiplos Veículos Aéreos Não Tripulados (VANTS) em uma Missão Colaborativa (Vandilberto)",
+  "Aplicações de Eletrônica de Potência em Sistemas de Energia (Isaac, Vandilberto, Adson, Vanessa, Edilson, Kleber, Marcus)",
+  "Sistema de geração de energia elétrica a partir de geração eólica com gerador de imãs permanentes com mitigação de harmônicas de corrente da rede elétrica (Adson, Vanessa)",
+  "Projeto de Máquinas Elétricas e Acionamentos (Adson, Vanessa)",
+  "Conversores Ressonantes Baseados em Capacitores Comutados para o Acionamento De LEDs e Mitigação Do Flicker (Edilson, Kleber)",
+  "Aplicações de Sistemas Fotovoltáicos (Edilson, Kleber)"
 ];
 
 function alterarSelectArray(select, array) {
@@ -204,7 +208,7 @@ function sendForm() {
 
   console.log(jsonToSend); // Debug
 
-  $.post("process.php", {
+  $.post("http://www.ppgeec.ufc.br/wp-content/themes/capes2019/process.php", {
     json: JSON.stringify(jsonToSend)
   }, function (data) {
     console.log(data);
