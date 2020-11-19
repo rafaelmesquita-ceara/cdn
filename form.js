@@ -208,7 +208,7 @@ function sendForm() {
 
   console.log(jsonToSend); // Debug
 
-  $.post("http://www.ppgeec.ufc.br/wp-content/themes/capes2019/process.php", {
+  $.post("http://www.ppgeec.ufc.br/wp-content/themes/temacapes2019/capes2019/process.php", {
     json: JSON.stringify(jsonToSend)
   }, function (data) {
     console.log(data);
