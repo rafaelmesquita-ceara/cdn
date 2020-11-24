@@ -179,7 +179,7 @@ function sendForm() {
   text15 = document.getElementById('Ask15').value;
   text16 = document.getElementById('Ask16').value;
 
-  if (name === "" || text16 === "") {
+  if (name === "") {
     alert('Preencha os campos corretamente!');
     return;
   }
