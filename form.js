@@ -85,6 +85,8 @@ span.onclick = function () {
 //Evento no botão para abrir modal
 btnArtigo.onclick = function () {
   modalArtigo.style.display = "block";
+  var element = document.getElementById("modal-body");
+  element.scrollTop = element.scrollHeight - element.clientHeight;
 
 }
 
@@ -215,11 +217,12 @@ function sendForm() {
     try {
       jsonData = JSON.parse(data);
       alert(jsonData["mensagem"]);
+      location.reload();
     } catch (error) {
-      alert("Erro interno, tente novamente mais tarde");
+      return alert("Erro interno, tente novamente mais tarde");
     }
   }).fail(function () {
-    alert("Erro interno, tente novamente mais tarde");
+    return alert("Erro interno, tente novamente mais tarde");
   });
 
 }
