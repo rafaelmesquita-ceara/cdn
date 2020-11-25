@@ -91,6 +91,7 @@ btnArtigo.onclick = function () {
 }
 
 function addArtigo() {
+  var id = Date.now();
   //Pegar os valores do form
   ask00 = document.getElementById('AskA0').value;
   ask01 = document.getElementById('AskA1').value;
@@ -100,7 +101,6 @@ function addArtigo() {
   ask05 = document.getElementById('AskA5').checked ? "Sim" : "Nao";
   ask06 = document.getElementById('AskA6').checked ? "Sim" : "Nao";
   ask07 = document.getElementById('AskA7').value;
-
   //Validacao de dados
   if (ask00 === "" || ask01 === "" || ask02 === "0" || ask03 === "0" || ask04 === "0" || ask07 === "") {
     alert('Preencha os campos corretamente!');
@@ -117,9 +117,10 @@ function addArtigo() {
       ask04,
       ask05,
       ask06,
-      ask07
+      ask07,
+      id
     });
-    addToList("listP", ask01); //Adicionar artigo na ul
+    addToList("listP", ask01, id); //Adicionar artigo na ul
   } else if (ask00 === "2") {
     //Adicionar artigo na lista
     artigosEmAnais.push({
@@ -129,9 +130,10 @@ function addArtigo() {
       ask04,
       ask05,
       ask06,
-      ask07
+      ask07,
+      id
     });
-    addToList("listA", ask01); //Adicionar artigo na ul
+    addToList("listA", ask01, id); //Adicionar artigo na ul
   } else {
     return;
   }
@@ -145,21 +147,82 @@ function addArtigo() {
   document.getElementById('AskA6').checked = false
   document.getElementById('AskA7').value = ""
 
-  console.log("ARTIGOS 1")
-  artigosDePeriodicos.map((artigo) => console.log(artigo)); //Debug
+  // console.log("ARTIGOS 1")
+  // artigosDePeriodicos.map((artigo) => console.log(artigo)); //Debug
 
-  console.log("ARTIGOS 2")
-  artigosEmAnais.map((artigo) => console.log(artigo)); //Debug
+  // console.log("ARTIGOS 2")
+  // artigosEmAnais.map((artigo) => console.log(artigo)); //Debug
 
   modalArtigo.style.display = "none"; //Fechar modal
 }
 
 //Função para adicionar li ao ul correspondente
-function addToList(list, artigo) {
+function addToList(list, artigo, id) {
+
   var ul = document.getElementById(list);
   var li = document.createElement("li");
+  li.id = id;
+  //btn visualizar
+  var btn = document.createElement("button");
+  btn.setAttribute("type", "button");
+  btn.onclick = () => seeArticle(id);
   li.appendChild(document.createTextNode(artigo));
+  btn.appendChild(document.createTextNode("Visualizar"));
+  li.appendChild(btn);
+
+
+  //btn excluir
+  var btnDelete = document.createElement("button");
+  btnDelete.setAttribute("type", "button");
+  btnDelete.onclick = () => deleteArticle(id);
+  btnDelete.appendChild(document.createTextNode("Excluir"));
+  li.appendChild(btnDelete);
   ul.appendChild(li);
+}
+
+function seeArticle(id) {
+  var articleType = 'Artigo de PERIÓDICOS';
+  var result = artigosDePeriodicos.find(obj => {
+    return obj.id === id
+  })
+  if (result === undefined) {
+    articleType = 'Artigo em ANAIS de eventos';
+    result = artigosEmAnais.find(obj => {
+      return obj.id === id
+    })
+  }
+
+  var text = `Tipo de artigo: ${articleType}
+
+Título do artigo: ${result.ask01}
+
+Área de concentração da publicação: ${ask02}
+
+Linha de pesquisa da publicação: ${ask03}
+
+Nome do projeto associado: ${ask04}
+
+A produção é vinculada a trabalho de conclusão? ${ask05}
+
+O trabalho do estudante já passou por defesa? ${ask06}
+
+O trabalho de conclusão é associado ao PPGEEC ou a outro programa? ${ask07}`
+  alert(text);
+}
+
+function deleteArticle(id) {
+  alert(`Visualizando artigo ${id}`);
+  artigosDePeriodicos = artigosDePeriodicos.filter(article => article.id != id);
+  artigosEmAnais = artigosEmAnais.filter(article => article.id != id);
+  var li = document.getElementById(id);
+  li.remove();
+
+  console.log("PERIODICOS");
+  console.log(artigosDePeriodicos);
+
+  console.log("ANAIS");
+  console.log(artigosEmAnais);
+
 }
 
 function sendForm() {
