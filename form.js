@@ -2,6 +2,7 @@ var modalArtigo = document.getElementById("modalArtigo");
 var btnArtigo = document.getElementById("btnArtigo");
 var span = document.getElementsByClassName("close")[0];
 
+
 sistemasDeComunicacao = [
   "Análise e Processamento de Sinais em Sistemas de Comunicação Sem Fio Cooperativos (Alexandre)",
   "Aplicação de Aprendizagem de Máquinas em Alocação de Recursos para Redes Móveis (Rafael)",
