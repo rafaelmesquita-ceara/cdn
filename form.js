@@ -166,6 +166,7 @@ function addToList(list, artigo, id) {
   var btn = document.createElement("button");
   btn.setAttribute("type", "button");
   btn.onclick = () => seeArticle(id);
+  btn.id = "btnEditArticle";
   li.appendChild(document.createTextNode(artigo));
   btn.appendChild(document.createTextNode("Visualizar"));
   li.appendChild(btn);
@@ -175,6 +176,7 @@ function addToList(list, artigo, id) {
   var btnDelete = document.createElement("button");
   btnDelete.setAttribute("type", "button");
   btnDelete.onclick = () => deleteArticle(id);
+  btnDelete.id = "btnDeleteArticle";
   btnDelete.appendChild(document.createTextNode("Excluir"));
   li.appendChild(btnDelete);
   ul.appendChild(li);
