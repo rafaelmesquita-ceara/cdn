@@ -166,7 +166,6 @@ function addToList(list, artigo, id) {
   var btn = document.createElement("button");
   btn.setAttribute("type", "button");
   btn.onclick = () => seeArticle(id);
-  btn.id = "btnEditArticle";
   li.appendChild(document.createTextNode(artigo));
   btn.appendChild(document.createTextNode("Visualizar"));
   li.appendChild(btn);
@@ -176,7 +175,6 @@ function addToList(list, artigo, id) {
   var btnDelete = document.createElement("button");
   btnDelete.setAttribute("type", "button");
   btnDelete.onclick = () => deleteArticle(id);
-  btnDelete.id = "btnDeleteArticle";
   btnDelete.appendChild(document.createTextNode("Excluir"));
   li.appendChild(btnDelete);
   ul.appendChild(li);
@@ -234,9 +232,12 @@ function sendForm() {
   check11 = document.getElementById('Ask11').checked ? "Sim" : "Nao";
   check12 = document.getElementById('Ask12').checked ? "Sim" : "Nao";
   check13 = document.getElementById('Ask13').checked ? "Sim" : "Nao";
-  check14 = document.getElementById('Ask14').checked ? "Sim" : "Nao";
   text15 = document.getElementById('Ask15').value;
   text16 = document.getElementById('Ask16').value;
+  text17 = document.getElementById('Ask17').value;
+  text18 = document.getElementById('Ask18').value;
+  text19 = document.getElementById('Ask19').value;
+  text20 = document.getElementById('Ask20').value;
 
   if (name === "") {
     alert('Preencha os campos corretamente!');
@@ -260,9 +261,12 @@ function sendForm() {
     check11,
     check12,
     check13,
-    check14,
     text15,
-    text16
+    text16,
+    text17,
+    text18,
+    text19,
+    text20
   }
 
   console.log(jsonToSend); // Debug
